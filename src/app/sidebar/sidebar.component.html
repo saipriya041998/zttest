@@ -1,0 +1,21 @@
+<p-sidebar  [(visible)]="visibleSidebar" [baseZIndex]="10000" (onclick)="onsidebaropen()">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+
+                  <a class="nav-link" routerLink="" routerLinkActive="router-link-active"  (click)="visibleSidebar = false"><h4><i class="fa fa-home"  ></i> HOME</h4><span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/about" routerLinkActive="router-link-active"  (click)="visibleSidebar = false" ><h4><i class="fa fa-newspaper-o"></i> ABOUT US</h4></a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" routerLink="/contact" routerLinkActive="router-link-active"  (click)="visibleSidebar = false"><h4><i class="fa fa-phone"></i> CONTACT US</h4></a>
+            </li>
+        </ul>
+</p-sidebar>
+
+
+
+
+
+
+

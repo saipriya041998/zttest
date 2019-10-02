@@ -1,41 +1,13 @@
-<header class="fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-light bg-warning">
-      <button  type="button" (click)="visibleSidebar1 = true" class="btn btn-warning btn-lg"><i class="fa fa-bars"></i> Zoom Teams </button>&nbsp;&nbsp;&nbsp;
-        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>&nbsp;&nbsp;&nbsp;&nbsp; -->
-          <!-- <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link"  routerLink="">HOME <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/about">ABOUT US</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/contact">CONTACT US</a>
-              </li>
-          </ul> -->
+<nav class="navbar navbar-expand-lg navbar-light bg-warning">
+      <button  pButton type="button" (click)="onClicksidebar()" class="btn btn-warning btn-lg"><i class="fa fa-bars"></i> Zoom Teams </button>&nbsp;&nbsp;&nbsp;
               <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" #searchInput placeholder="Search" aria-label="Search">
                     <button class="btn btn-primary my-2 my-sm-0" type="submit" (click)="onSearchClick(searchInput.value)">Search</button>
               </form>
   </nav>
-</header>
+<app-sidebar></app-sidebar>
 
-<p-sidebar [(visible)]="visibleSidebar1" [baseZIndex]="10000">
-    <!-- <h2 style="font-weight:normal">Zoom Teams</h2> -->
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link"  routerLink=""><h4><i class="fa fa-home"></i> HOME</h4><span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/about"><h4><i class="fa fa-newspaper-o"></i> ABOUT US</h4></a>
-      </li>
-      <li class="nav-item">
-          <a class="nav-link" routerLink="/contact"><h4><i class="fa fa-phone"></i> CONTACT US</h4></a>
-        </li>
-    </ul>
-    <!-- <button type="button" (click)="visibleSidebar1 = false" label="Save" class="btn btn-primary">Save</button>
-    <button  type="button" (click)="visibleSidebar1 = false" label="Cancel" class="btn btn-warning btn-sm">Cancel</button>-->
-</p-sidebar>
+
+
+
 

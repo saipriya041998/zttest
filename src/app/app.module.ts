@@ -1,7 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
@@ -15,6 +13,7 @@ import {ToastModule} from 'primeng/toast';
 import { MessageService } from 'primeng/components/common/messageservice';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SidebarModule} from 'primeng/sidebar';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +21,8 @@ import {SidebarModule} from 'primeng/sidebar';
     MenuComponent,
     HomeComponent,
     ContactUsComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
