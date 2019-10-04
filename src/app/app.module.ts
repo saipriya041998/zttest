@@ -14,6 +14,9 @@ import { MessageService } from 'primeng/components/common/messageservice';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SidebarModule} from 'primeng/sidebar';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { ReverseStrPipe } from './reverse-str.pipe';
+import { CapsPipe } from './caps.pipe';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     HomeComponent,
     ContactUsComponent,
     AboutUsComponent,
-    SidebarComponent
+    SidebarComponent,
+    ReverseStrPipe,
+    CapsPipe,
+
   ],
   imports: [
     BrowserModule,

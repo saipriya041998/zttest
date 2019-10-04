@@ -16,7 +16,7 @@
     <div class="panel-heading"><B></B></div>
     <table class="table jumbotron">
       <thead>
-          <th>Article Id</th>
+          <th>Article Id </th>
           <th>Article Name</th>
           <!-- <th>Content</th> -->
           <!-- <th>Preview content</th> -->
@@ -33,8 +33,8 @@
       </thead>
       <tbody *ngFor="let item of all_articles;let i=index">
           <tr class="bg-white">
-              <td>{{item.articleId}}</td>
-              <td>{{item.articleName}}</td>
+              <td>{{item.articleId |reverseStr}}</td>
+              <td>{{item.articleName |caps}}</td>
               <!-- <td [innerHTML]="item.content"></td> -->
               <!-- <td [innerHTML]="item.previewContent"></td> -->
               <td>{{item.categoryId}}</td>
@@ -192,18 +192,5 @@
           </div>
         </div>
       </div>
-
-      <!-- <h1>Read More</h1>
-      <div  class="container">
-      <p>{{readarr?.articleId}}</p>
-       <p>{{readarr?.articleName}}</p>
-       <p>{{readarr?.categoryName}}</p>
-       <p>{{readarr?.createdDate}}</p>
-       <!-- <p>{{readarr?.createdBy}}</p> -->
-       <!-- <p>{{readarr?.createdByName}}</p> -->
-       <!-- <p [innerHTML]="readarr?.previewContent"></p>
-       <p [innerHTML]="readarr?.content"></p>
-      </div>-->
-
       <br>
-    </ng-template>
+</ng-template>
