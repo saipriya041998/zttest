@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
   all_arrbyid: Kbarticle[] = [];
   article_id: any;
   arr1: Kbarticle[] = [];
-  article_id1: any;
+  article_id1 : any;
   closeResult: string;
   arr2: Kbarticle[] = [];
   readarr: Kbarticle;
@@ -31,52 +31,44 @@ export class HomeComponent implements OnInit {
   cat: Ddlcategory[] = [];
   totalItem: number;
   totalPages: number;
-  Page= 1;
+  Page = 1;
   arr3: Kbarticle[] = [];
   ngvariable= false;
-serarr: Kbarticle[] = [];
-
+  serarr: Kbarticle[] = [];
+  char :any='ggg';
   constructor(private _data: ArticleService, private fb: FormBuilder, private messageService: MessageService, private modalService: NgbModal, private act: ActivatedRoute, private config: NgbModalConfig) {
     config.backdrop ='static';
     config.keyboard = false;
    }
-
   ngOnInit() {
-
-
+    console.log(this.char);
     this.kb = this.fb.group({
-      articleId: new FormControl(),
-      articleName: new FormControl(null, Validators.required),
-      content: new FormControl(null, Validators.required),
-      previewContent: new FormControl(),
-      categoryId: new FormControl(),
-      categoryName: new FormControl(),
-      createdBy: new FormControl(),
-      createdByName: new FormControl(),
-      createdDate: new FormControl(),
-      modifiedBy: new FormControl(),
-      modifiedByName: new FormControl(),
-      modifiedDate: new FormControl()
-    });
-
-    this._data.getAllkbArticles().subscribe(
-      (data: Kbarticle[]) => {
-
-        this.arr = data;
-
-        console.log(this.arr);
-        this.all_articles = this.arr['kbArticles'];
-        this.ngvariable = true;
-        console.log(this.all_articles);
-      }
-    );
-    this.getPageInformation();
-    this.getcatogeries();
-
-    // this.getArticleByIds(this.article_id);
+        articleId: new FormControl(),
+        articleName: new FormControl(null, Validators.required),
+        content: new FormControl(null, Validators.required),
+        previewContent: new FormControl(),
+        categoryId: new FormControl(),
+        categoryName: new FormControl(),
+        createdBy: new FormControl(),
+        createdByName: new FormControl(),
+        createdDate: new FormControl(),
+        modifiedBy: new FormControl(),
+        modifiedByName: new FormControl(),
+        modifiedDate: new FormControl()
+      });
+      this._data.getAllkbArticles().subscribe(
+        (data: Kbarticle[]) => {
+         this.arr = data;
+          console.log(this.arr);
+          this.all_articles = this.arr['kbArticles'];
+          this.ngvariable = true;
+          console.log(this.all_articles);
+        }
+      );
+      this.getPageInformation();
+      this.getcatogeries();
   }
   openAddPopup(Addpopup) {
-
       this.modalService.open(Addpopup, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
       }, (reason) => {

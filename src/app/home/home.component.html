@@ -1,4 +1,4 @@
-<app-menu (search)="onMenuClickForSearch($event)"></app-menu>
+<!-- <app-menu (search)="onMenuClickForSearch($event)"></app-menu> -->
 <br>
 <br>
 <!-- <br>
@@ -45,13 +45,13 @@
               <!-- <td>{{item.modifiedBy}}</td> -->
               <!-- <td>{{item.modifiedByName}}</td>
               <td>{{item.modifiedDate}}</td> -->
-              <td> <button class="btn btn-primary btn-sm" (click)="openEditPopup(Editpopup,i)"  ><i class="fa fa-pencil"></i>Edit</button></td>
+              <td><button class="btn btn-primary btn-sm" (click)="openEditPopup(Editpopup,i)"  ><i class="fa fa-pencil"></i>Edit</button></td>
               <td><button class="btn btn-secondary btn-sm" (click)="onReadMore(Readmore,item)" >Read More</button></td>
           </tr>
         </tbody>
     </table>
   </div>
-  <ngb-pagination *ngIf="ngvariable" [collectionSize]="totalItem"  [maxSize]="5" [rotate]="true" [(page)]="Page" [(page)]="page"  (pageChange)="showPage([Page])"  [boundaryLinks]="true"></ngb-pagination>
+  <ngb-pagination *ngIf="ngvariable" [collectionSize]="totalItem"  [maxSize]="5" [rotate]="true" [(page)]="Page"   (pageChange)="showPage([Page])"  [boundaryLinks]="true"></ngb-pagination>
 </div>
 <ng-template #Addpopup let-modal>
   <br>
@@ -105,7 +105,8 @@
           <button class="btn btn-warning" type="button" (click)="modal.close('Save click')">close</button>
         </div>
   </div>
-</div><br>
+</div>
+<br>
 <br>
   </form>
 </ng-template>
@@ -145,7 +146,7 @@
                   <div class="col-xs-6 col-sm-4 col-md-6">
                       <label><b>CATEGORY</b></label>
                       <input formControlName="categoryId" type="text" class="form-control">
-                      <!-- <label class="alert alert-danger" *ngIf="kb.get('categoryId').hasError('required') && !kb.get('categoryId').pristine" >categoryId is required.</label> -->
+                       <label class="alert alert-danger" *ngIf="kb.get('categoryId').hasError('required') && !kb.get('categoryId').pristine" >categoryId is required.</label> -->
 
                     <!-- </div>
                   </div>
@@ -154,7 +155,7 @@
                     <div class="row">
                         <div class="col-xs-6 col-sm-4 col-md-6">
                           <label><b>CONTENT</b></label>
-                          <input formControlName="content" type="text" class="form-control">
+                          <input formControlName="content" [innerHTML] type="text" class="form-control">
                           <!-- <label class="alert alert-danger" *ngIf="kb.get('content').hasError('required') && !kb.get('content').pristine" >content is required.</label> -->
                         </div>
                       </div>
@@ -165,10 +166,10 @@
         <div class="col-xs-6 col-sm-4 col-md-6">
             <button class="btn btn-primary" type="submit">Submit</button>&nbsp;&nbsp;
             <button class="btn btn-warning" type="button" (click)="modal.close('Save click')">close</button>
-
           </div>
     </div>
-  </div><br>
+  </div>
+  <br>
   <br>
     </form>
   </ng-template>

@@ -9,7 +9,5 @@ const arr:Routes=[
   {path:'' ,component:HomeComponent},
   {path:'contact',component:ContactUsComponent},
   {path:'about',component:AboutUsComponent}
-
-
 ];
 export const routing=RouterModule.forRoot(arr);
