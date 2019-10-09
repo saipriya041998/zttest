@@ -7,6 +7,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Pageinfo } from './pageinfo';
 import { Ddlcategory } from './ddlcategory';
 import { MessageService } from 'primeng/components/common/messageservice';
+import { MenuItem } from 'primeng/api';
+// import { ShAttachMenuDirective, ShContextMenuComponent } from 'ng2-right-click-menu';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +16,7 @@ import { MessageService } from 'primeng/components/common/messageservice';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  items: MenuItem[];
   visibleSidebar1;
   arr: Kbarticle[] = [];
   all_articles: Kbarticle[] = [];
@@ -32,6 +35,7 @@ export class HomeComponent implements OnInit {
   totalItem: number;
   totalPages: number;
   Page = 1;
+  // data:ShContextMenuComponent;
   arr3: Kbarticle[] = [];
   ngvariable= false;
   serarr: Kbarticle[] = [];
@@ -41,6 +45,30 @@ export class HomeComponent implements OnInit {
     config.keyboard = false;
    }
   ngOnInit() {
+    this.items = [
+      {
+          label: 'File',
+          items: [{
+                  label: 'New',
+                  icon: 'pi pi-fw pi-plus',
+                  items: [
+                      {label: 'Project'},
+                      {label: 'Other'},
+                  ]
+              },
+              {label: 'Open'},
+              {label: 'Quit'}
+          ]
+      },
+      {
+          label: 'Edit',
+          icon: 'pi pi-fw pi-pencil',
+          items: [
+              {label: 'Delete', icon: 'pi pi-fw pi-trash'},
+              {label: 'Refresh', icon: 'pi pi-fw pi-refresh'}
+          ]
+      }
+  ];
     console.log(this.char);
     this.kb = this.fb.group({
         articleId: new FormControl(),
@@ -56,17 +84,17 @@ export class HomeComponent implements OnInit {
         modifiedByName: new FormControl(),
         modifiedDate: new FormControl()
       });
-      this._data.getAllkbArticles().subscribe(
+    this._data.getAllkbArticles().subscribe(
         (data: Kbarticle[]) => {
          this.arr = data;
-          console.log(this.arr);
-          this.all_articles = this.arr['kbArticles'];
-          this.ngvariable = true;
-          console.log(this.all_articles);
+         console.log(this.arr);
+         this.all_articles = this.arr['kbArticles'];
+         this.ngvariable = true;
+         console.log(this.all_articles);
         }
       );
-      this.getPageInformation();
-      this.getcatogeries();
+    this.getPageInformation();
+    this.getcatogeries();
   }
   openAddPopup(Addpopup) {
       this.modalService.open(Addpopup, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
@@ -216,7 +244,7 @@ UpdateArticles(item) {
           this.page = data['pagerInfo'];
           console.log(this.page);
           this.totalItem = this.page.totalItems;
-          this.totalPages = this.page.totalPages;
+          // this.totalPages = this.page.totalPages;
           this.all_articles = this.arr['kbArticles'];
         }
       );

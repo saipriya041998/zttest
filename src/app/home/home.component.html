@@ -5,10 +5,41 @@
 <br>
 <br>
 <br> -->
+<!-- <sh-context-menu #menu>
+  <ng-template shContextMenuItem let-data (click)="onClick($event)">
+    <div>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+          <a class="nav-link"><h6><i class="fa fa-save"></i> SAVE</h6><span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"><h6><i class="fa fa-pencil"></i> EDIT</h6></a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link"><h6><i class="fa fa-save"></i> SAVE AS</h6></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"><h6><i class="fa fa-save"></i> CUT</h6></a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link"><h6><i class="fa fa-copy"></i> COPY</h6></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"><h6><i class="fa fa-paste"></i> PASTE</h6></a>
+        </li>
+    </ul>
+    </div>
+  </ng-template>
+</sh-context-menu> -->
+<!-- <div [shAttachMenu]="menu"> -->
+<p-contextMenu [global]="true" [model]="items"></p-contextMenu>
 <div class="container-fluid bg-light">
   <div  class="text1">
       <p-toast [style]="{marginTop: '80px'}"></p-toast>
     <label>ARTICLE DISPLAY</label>
+    <button appCard>click</button>
+    <!-- <input appCard> -->
     <label class="pull-right"><button class="btn btn-warning btn-sm" (click)="openAddPopup(Addpopup)">Add Article</button></label>
   </div>
   <br>
@@ -53,6 +84,7 @@
   </div>
   <ngb-pagination *ngIf="ngvariable" [collectionSize]="totalItem"  [maxSize]="5" [rotate]="true" [(page)]="Page"   (pageChange)="showPage([Page])"  [boundaryLinks]="true"></ngb-pagination>
 </div>
+<!-- </div> -->
 <ng-template #Addpopup let-modal>
   <br>
 <form [formGroup]="kb" class="container"  (ngSubmit)="ArticleSave(kb.value)">
@@ -171,8 +203,8 @@
   </div>
   <br>
   <br>
-    </form>
-  </ng-template>
+  </form>
+</ng-template>
   <ng-template #Readmore let-modal>
       <br>
       <div class="container">

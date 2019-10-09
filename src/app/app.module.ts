@@ -16,7 +16,10 @@ import {SidebarModule} from 'primeng/sidebar';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ReverseStrPipe } from './reverse-str.pipe';
 import { CapsPipe } from './caps.pipe';
-
+import { CardDirective } from './card.directive';
+// import {ShContextMenuModule} from 'ng2-right-click-menu'
+import {ContextMenuModule} from 'primeng/contextmenu';
+import { ContextdemoComponent } from './contextdemo/contextdemo.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,8 @@ import { CapsPipe } from './caps.pipe';
     SidebarComponent,
     ReverseStrPipe,
     CapsPipe,
+    CardDirective,
+    ContextdemoComponent,
 
   ],
   imports: [
@@ -40,7 +45,10 @@ import { CapsPipe } from './caps.pipe';
     FormsModule,
     SidebarModule,
     NgbAlertModule,
-    routing
+    routing,
+    ContextMenuModule
+
+    // ShContextMenuModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]
