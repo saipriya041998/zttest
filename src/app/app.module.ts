@@ -18,9 +18,14 @@ import { ReverseStrPipe } from './reverse-str.pipe';
 import { CapsPipe } from './caps.pipe';
 import { CardDirective } from './card.directive';
 // import {ShContextMenuModule} from 'ng2-right-click-menu'
-import {ContextMenuModule} from 'primeng/contextmenu';
+import { ContextMenuModule} from 'primeng/contextmenu';
 import { ContextdemoComponent } from './contextdemo/contextdemo.component';
-
+import { EditarticleComponent } from './editarticle/editarticle.component';
+import { AddarticleComponent } from './addarticle/addarticle.component';
+import {DialogModule} from 'primeng/dialog';
+import {InputTextModule} from 'primeng/inputtext';
+import {ButtonModule} from 'primeng/button';
+import {DropdownModule} from 'primeng/dropdown';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +38,8 @@ import { ContextdemoComponent } from './contextdemo/contextdemo.component';
     CapsPipe,
     CardDirective,
     ContextdemoComponent,
+    EditarticleComponent,
+    AddarticleComponent,
 
   ],
   imports: [
@@ -46,7 +53,11 @@ import { ContextdemoComponent } from './contextdemo/contextdemo.component';
     SidebarModule,
     NgbAlertModule,
     routing,
-    ContextMenuModule
+    ContextMenuModule,
+    DialogModule,
+    InputTextModule,
+    ButtonModule,
+    DropdownModule
 
     // ShContextMenuModule
   ],

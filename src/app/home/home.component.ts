@@ -40,6 +40,7 @@ export class HomeComponent implements OnInit {
   ngvariable= false;
   serarr: Kbarticle[] = [];
   char :any='ggg';
+  display:boolean=false;
   constructor(private _data: ArticleService, private fb: FormBuilder, private messageService: MessageService, private modalService: NgbModal, private act: ActivatedRoute, private config: NgbModalConfig) {
     config.backdrop ='static';
     config.keyboard = false;
@@ -48,26 +49,31 @@ export class HomeComponent implements OnInit {
     this.items = [
       {
           label: 'File',
+          icon:'fa fa-file',
           items: [{
                   label: 'New',
-                  icon: 'pi pi-fw pi-plus',
+                  icon: 'fa fa-plus',
                   items: [
-                      {label: 'Project'},
-                      {label: 'Other'},
+                      {label: 'Article', icon:'fa fa-newspaper-o',command:(click:any)=>{
+                        this.display=true;
+                      }}
                   ]
               },
-              {label: 'Open'},
-              {label: 'Quit'}
+
+
           ]
       },
       {
           label: 'Edit',
-          icon: 'pi pi-fw pi-pencil',
+          icon: 'fa fa-pencil',
+          command:(click:any)=>{
+            this.display=true;
+          },
           items: [
-              {label: 'Delete', icon: 'pi pi-fw pi-trash'},
-              {label: 'Refresh', icon: 'pi pi-fw pi-refresh'}
+              // {label: 'Delete', icon: 'fa fa-trash'},
+              {label: 'Refresh', icon: 'fa fa-refresh'}
           ]
-      }
+      }, {label: 'Quit'}
   ];
     console.log(this.char);
     this.kb = this.fb.group({

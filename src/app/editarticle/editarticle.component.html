@@ -1,0 +1,57 @@
+
+ <form class="container">
+    <h4>Edit Article</h4>
+  <div class="container">
+        <div class="row">
+          <div class="col-xs-6 col-sm-4 col-md-6">
+            <label><b>ARTICLE_NAME</b></label>
+            <input  type="text" class="form-control">
+            <!-- <label class="alert alert-danger" *ngIf="kb.get('articleName').hasError('required') && !kb.get('articleName').pristine" >articleName is required.</label> -->
+
+          </div>
+        </div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-6 col-sm-4 col-md-6">
+              <label><b>Category name</b></label>
+              <select  class="form-control">
+                <option>Choose your option</option>
+                <option>Accounts Recivables</option>
+                <option>Practice Management</option>
+                <option>Surgical Authorizations & Verifications</option>
+              </select>
+            </div>
+          </div>
+        </div>
+            <!-- <div class="container">
+              <div class="row">
+                <div class="col-xs-6 col-sm-4 col-md-6">
+                    <label><b>CATEGORY</b></label>
+                    <input formControlName="categoryId" type="text" class="form-control">
+                     <label class="alert alert-danger" *ngIf="kb.get('categoryId').hasError('required') && !kb.get('categoryId').pristine" >categoryId is required.</label> -->
+
+                  <!-- </div>
+                </div>
+              </div>  -->
+              <div class="container">
+                  <div class="row">
+                      <div class="col-xs-6 col-sm-4 col-md-6">
+                        <label><b>CONTENT</b></label>
+                        <input  type="text" class="form-control">
+                        <!-- <label class="alert alert-danger" *ngIf="kb.get('content').hasError('required') && !kb.get('content').pristine" >content is required.</label> -->
+                      </div>
+                    </div>
+                  </div>
+            <br>
+<div class="container">
+  <div class="row">
+      <div class="col-xs-6 col-sm-4 col-md-6">
+          <button class="btn btn-primary" type="submit">Submit</button>&nbsp;&nbsp;
+          <!-- <button class="btn btn-warning" type="button" (click)="modal.close('Save click')">close</button> -->
+        </div>
+  </div>
+</div>
+<br>
+<br>
+</form>

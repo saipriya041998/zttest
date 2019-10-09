@@ -33,12 +33,49 @@
   </ng-template>
 </sh-context-menu> -->
 <!-- <div [shAttachMenu]="menu"> -->
+
+<p-dialog header="Add/Edit Article" [(visible)]="display" [modal]="true" [responsive]="true" [style]="{width: '350px', minWidth: '200px'}" [minY]="70"
+[maximizable]="true" [baseZIndex]="10000">
+<div class="container-fluid">
+     <form class="container">
+        <span >
+            <label for="float-input">Article Name</label>
+            <input id="float-input" type="text" size="30" pInputText>
+
+        </span>
+                <!-- <label class="alert alert-danger" *ngIf="kb.get('articleName').hasError('required') && !kb.get('articleName').pristine" >articleName is required.</label> -->
+                  <!-- <label><b>Category name</b></label>
+                  <select  class="form-control">
+                    <option>Choose your option</option>
+                    <option>Accounts Recivables</option>
+                    <option>Practice Management</option>
+                    <option>Surgical Authorizations & Verifications</option>
+                  </select> -->
+
+            <span >
+                <label for="float-input">Content</label>
+                <input id="float-input" type="text" size="30" pInputText>
+
+            </span>
+                <br>
+                <span>
+                    <!-- <p-button label="Submit"></p-button> -->
+                </span>
+    <br>
+    <br>
+    </form>
+    </div>
+<p-footer>
+    <button type="button" pButton icon="pi pi-check" (click)="display=false" label="Submit"></button>
+    <button type="button" pButton icon="pi pi-close" (click)="display=false" label="Cancel" class="ui-button-secondary"></button>
+</p-footer>
+</p-dialog>
 <p-contextMenu [global]="true" [model]="items"></p-contextMenu>
 <div class="container-fluid bg-light">
   <div  class="text1">
       <p-toast [style]="{marginTop: '80px'}"></p-toast>
-    <label>ARTICLE DISPLAY</label>
-    <button appCard>click</button>
+    <label>ARTICLE DISPLAY</label>&nbsp;
+    <button class="btn btn-primary btn-sm" appCard>click</button>
     <!-- <input appCard> -->
     <label class="pull-right"><button class="btn btn-warning btn-sm" (click)="openAddPopup(Addpopup)">Add Article</button></label>
   </div>
