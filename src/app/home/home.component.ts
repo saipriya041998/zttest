@@ -59,8 +59,6 @@ export class HomeComponent implements OnInit {
                       }}
                   ]
               },
-
-
           ]
       },
       {
@@ -73,7 +71,7 @@ export class HomeComponent implements OnInit {
               // {label: 'Delete', icon: 'fa fa-trash'},
               {label: 'Refresh', icon: 'fa fa-refresh',
             command:(click:any)=>{
-this.ngOnInit();
+
             }
             }
           ]
@@ -123,7 +121,6 @@ this.ngOnInit();
     }
     }
   ArticleSave(item) {
-
     this._data.addArticle(item
       // alternate method
     //   new Kbarticle(
@@ -157,7 +154,6 @@ this.ngOnInit();
       }
     );
     console.log('completed');
-
   }
   // getArticleByIds(item){
   //   this._data.getArticleById(item).subscribe(
