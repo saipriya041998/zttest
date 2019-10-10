@@ -20,8 +20,7 @@ import { CardDirective } from './card.directive';
 // import {ShContextMenuModule} from 'ng2-right-click-menu'
 import { ContextMenuModule} from 'primeng/contextmenu';
 import { ContextdemoComponent } from './contextdemo/contextdemo.component';
-import { EditarticleComponent } from './editarticle/editarticle.component';
-import { AddarticleComponent } from './addarticle/addarticle.component';
+
 import {DialogModule} from 'primeng/dialog';
 import {InputTextModule} from 'primeng/inputtext';
 import {ButtonModule} from 'primeng/button';
@@ -37,9 +36,8 @@ import {DropdownModule} from 'primeng/dropdown';
     ReverseStrPipe,
     CapsPipe,
     CardDirective,
-    ContextdemoComponent,
-    EditarticleComponent,
-    AddarticleComponent,
+    ContextdemoComponent
+
 
   ],
   imports: [
@@ -58,7 +56,6 @@ import {DropdownModule} from 'primeng/dropdown';
     InputTextModule,
     ButtonModule,
     DropdownModule
-
     // ShContextMenuModule
   ],
   providers: [MessageService],

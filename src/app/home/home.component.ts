@@ -3,7 +3,7 @@ import { ArticleService } from '../article.service';
 import { Kbarticle } from './kbarticle';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbModal, ModalDismissReasons, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Pageinfo } from './pageinfo';
 import { Ddlcategory } from './ddlcategory';
 import { MessageService } from 'primeng/components/common/messageservice';
@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
   serarr: Kbarticle[] = [];
   char :any='ggg';
   display:boolean=false;
-  constructor(private _data: ArticleService, private fb: FormBuilder, private messageService: MessageService, private modalService: NgbModal, private act: ActivatedRoute, private config: NgbModalConfig) {
+  constructor(private _data: ArticleService,private route:Router, private fb: FormBuilder, private messageService: MessageService, private modalService: NgbModal, private act: ActivatedRoute, private config: NgbModalConfig) {
     config.backdrop ='static';
     config.keyboard = false;
    }
@@ -71,9 +71,13 @@ export class HomeComponent implements OnInit {
           },
           items: [
               // {label: 'Delete', icon: 'fa fa-trash'},
-              {label: 'Refresh', icon: 'fa fa-refresh'}
+              {label: 'Refresh', icon: 'fa fa-refresh',
+            command:(click:any)=>{
+this.ngOnInit();
+            }
+            }
           ]
-      }, {label: 'Quit'}
+      }, {label: 'Quit',icon:'fa fa-close'}
   ];
     console.log(this.char);
     this.kb = this.fb.group({
