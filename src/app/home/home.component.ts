@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import { ArticleService } from '../article.service';
 import { Kbarticle } from './kbarticle';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -45,6 +45,7 @@ export class HomeComponent implements OnInit {
     config.backdrop ='static';
     config.keyboard = false;
    }
+
   ngOnInit() {
     this.items = [
       {
@@ -67,15 +68,15 @@ export class HomeComponent implements OnInit {
           command:(click:any)=>{
             this.display=true;
           },
-          items: [
-              // {label: 'Delete', icon: 'fa fa-trash'},
-              {label: 'Refresh', icon: 'fa fa-refresh',
-            command:(click:any)=>{
 
-            }
-            }
-          ]
-      }, {label: 'Quit',icon:'fa fa-close'}
+              // {label: 'Delete', icon: 'fa fa-trash'},
+
+
+      },{label: 'Refresh', icon: 'fa fa-refresh',
+      command:(click:any)=>{
+        window.location.reload();
+      }
+      },{label: 'Quit',icon:'fa fa-close'}
   ];
     console.log(this.char);
     this.kb = this.fb.group({
@@ -150,7 +151,6 @@ export class HomeComponent implements OnInit {
           }
         );
         this.modalService.dismissAll();
-
       }
     );
     console.log('completed');

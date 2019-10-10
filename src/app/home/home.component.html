@@ -76,14 +76,11 @@
         </div>
   </div>
 </div> -->
-<br>
-<br>
+    <button type="submit" pButton  [disabled]="!kb.valid"  label="Submit"></button>&nbsp;&nbsp;
+    <button type="button" pButton  (click)="display=false" label="Cancel" class="ui-button-secondary"></button>
   </form>
-    </div>
-<p-footer>
-    <button type="submit" pButton icon="pi pi-check" [disabled]="!kb.valid"  label="Submit"></button>
-    <button type="button" pButton icon="pi pi-close" (click)="display=false" label="Cancel" class="ui-button-secondary"></button>
-</p-footer>
+</div>
+<br>
 </p-dialog>
 <p-contextMenu [global]="true" [model]="items"></p-contextMenu>
 <div class="container-fluid bg-light">
