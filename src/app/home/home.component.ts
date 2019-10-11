@@ -68,10 +68,7 @@ export class HomeComponent implements OnInit {
           command:(click:any)=>{
             this.display=true;
           },
-
               // {label: 'Delete', icon: 'fa fa-trash'},
-
-
       },{label: 'Refresh', icon: 'fa fa-refresh',
       command:(click:any)=>{
         window.location.reload();

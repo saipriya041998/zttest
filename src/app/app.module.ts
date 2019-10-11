@@ -20,11 +20,12 @@ import { CardDirective } from './card.directive';
 // import {ShContextMenuModule} from 'ng2-right-click-menu'
 import { ContextMenuModule} from 'primeng/contextmenu';
 import { ContextdemoComponent } from './contextdemo/contextdemo.component';
-
+import {TableModule} from 'primeng/table';
 import {DialogModule} from 'primeng/dialog';
 import {InputTextModule} from 'primeng/inputtext';
 import {ButtonModule} from 'primeng/button';
 import {DropdownModule} from 'primeng/dropdown';
+import { PrimedisplayComponent } from './primedisplay/primedisplay.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,8 @@ import {DropdownModule} from 'primeng/dropdown';
     ReverseStrPipe,
     CapsPipe,
     CardDirective,
-    ContextdemoComponent
+    ContextdemoComponent,
+    PrimedisplayComponent
 
 
   ],
@@ -55,7 +57,8 @@ import {DropdownModule} from 'primeng/dropdown';
     DialogModule,
     InputTextModule,
     ButtonModule,
-    DropdownModule
+    DropdownModule,
+    TableModule
     // ShContextMenuModule
   ],
   providers: [MessageService],

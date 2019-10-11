@@ -40,7 +40,7 @@
   <form [formGroup]="kb" class="container"  (ngSubmit)="ArticleSave(kb.value)">
   <div class="container">
         <div class="row">
-          <div class="col">
+          <div class="col-md-10">
             <label><b>ARTICLE_NAME</b></label>
             <input formControlName="articleName" type="text" class="form-control">
             <label class="alert alert-danger" *ngIf="kb.get('articleName').hasError('required') && !kb.get('articleName').pristine" >articleName is required.</label>
@@ -49,11 +49,11 @@
         </div>
         <div class="container">
           <div class="row">
-            <div class="col">
+            <div class="col-md-10">
               <label><b>CATEGORY NAME</b></label>
               <select formControlName="categoryId" class="form-control">
-                <option>Choose your category</option>
-                <option *ngFor="let item of cat" [value]="item.categoryId">{{item.categoryName}}
+                <option class="text1">Choose your category</option>
+                <option *ngFor="let item of cat" class="text1" [value]="item.categoryId">{{item.categoryName}}
                 </option>
               </select>
             </div>
@@ -61,7 +61,7 @@
         </div>
         <div class="container">
                   <div class="row">
-                      <div class="col">
+                      <div class="col-md-10">
                         <label><b>CONTENT</b></label>
                         <input formControlName="content" [innerHTML] type="text"  class="form-control">
                         <label class="alert alert-danger" *ngIf="kb.get('content').hasError('required') && !kb.get('content').pristine" >content is required.</label>
@@ -86,7 +86,7 @@
 <div class="container-fluid bg-light">
   <div  class="text1">
       <p-toast [style]="{marginTop: '80px'}"></p-toast>
-    <label>ARTICLE DISPLAY</label>&nbsp;
+    <label><h5>ARTICLE DISPLAY</h5></label>&nbsp;
     <button class="btn btn-primary btn-sm" appCard>click</button>
     <!-- <input appCard> -->
     <label class="pull-right"><button class="btn btn-warning btn-sm" (click)="openAddPopup(Addpopup)">Add Article</button></label>
