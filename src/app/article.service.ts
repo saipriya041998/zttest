@@ -6,14 +6,14 @@ import { promise } from 'protractor';
   providedIn: 'root'
 })
 export class ArticleService {
-dispplay_article='https://56772468.ngrok.io/api/KB/GetArticles?getall=0&categ=';
-add_article= "https://56772468.ngrok.io/api/KB/InsertUpdateKBAricles";
-update= "https://56772468.ngrok.io/api/KB/InsertUpdateKBAricles";
-article_by_id='https://56772468.ngrok.io/api/KB/GetKBArticlesById?ArticleId=';
-readmore='https://56772468.ngrok.io/api/KB/GetReadArticle?ArticleId=';
-pagination= "https://56772468.ngrok.io/api/KB/GetArticles?getall=0&categ=&";
-getcateg='https://56772468.ngrok.io/api/KB/GetCategories';
-search="https://56772468.ngrok.io/api/KB/GetArticles?getall=0&categ=&Page=1&SearchString=";
+dispplay_article='https://51bf1e7f.ngrok.io/api/KB/GetArticles?getall=0&categ=';
+add_article= "https://51bf1e7f.ngrok.io/api/KB/InsertUpdateKBAricles";
+update= "https://51bf1e7f.ngrok.io/api/KB/InsertUpdateKBAricles";
+article_by_id='https://51bf1e7f.ngrok.io/api/KB/GetKBArticlesById?ArticleId=';
+readmore='https://51bf1e7f.ngrok.io/api/KB/GetReadArticle?ArticleId=';
+pagination= "https://51bf1e7f.ngrok.io/api/KB/GetArticles?getall=0&categ=&";
+getcateg='https://51bf1e7f.ngrok.io/api/KB/GetCategories';
+search="https://51bf1e7f.ngrok.io/api/KB/GetArticles?getall=0&categ=&Page=1&SearchString=";
 concat: string;
 
   constructor(private _http: HttpClient) { }
@@ -34,6 +34,7 @@ concat: string;
     return this._http.get(this.article_by_id + article_id);
   }
   updateArticle(item) {
+    console.log(item);
     const body = JSON.stringify(item);
     const head = new HttpHeaders().set('Content-Type', 'application/json');
     return this._http.post(this.update, body, {headers: head});

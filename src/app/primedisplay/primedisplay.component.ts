@@ -42,8 +42,7 @@ export class PrimedisplayComponent implements OnInit,OnDestroy {
         modifiedByName: new FormControl(),
         modifiedDate: new FormControl()
       });
-
-    // this.getAllArticles();
+    this.getAllArticles();
     this.id=setInterval(()=>{
       this.getAllArticles();
     },5000);
@@ -60,15 +59,9 @@ export class PrimedisplayComponent implements OnInit,OnDestroy {
     { label:'Edit',icon:'fa fa-pencil',command:(event)=>this.editArticle(this.selectedCar)}
 ];
 }
-ngOnDestroy(){
-// if(this.id){
-//   clearInterval(this.id);
-// }
-}
 viewArticle(car: Kbarticle) {
     this.messageService.add({ severity: 'info', summary: 'Car Selected', detail: car.articleId + ' - ' + car.articleName });
 }
-
 deleteArticle(car: Kbarticle) {
   console.log(car);
   let index = -1;
@@ -87,12 +80,12 @@ editArticle(car:Kbarticle){
   this.fetchedarray=car;
   console.log(this.fetchedarray);
   this.kb.patchValue({
-    articleId:this.fetchedarray.articleId,
-    articleName:this.fetchedarray.articleName,
-    categoryName:this.fetchedarray.categoryName,
-    content:this.fetchedarray.content
+    articleId: this.fetchedarray.articleId,
+    articleName: this.fetchedarray.articleName,
+    categoryId:this.fetchedarray.categoryId,
+    categoryName: this.fetchedarray.categoryName,
+    content: this.fetchedarray.content
   });
-
 }
 getAllArticles(){
   this._data.getAllkbArticles().subscribe(
@@ -100,6 +93,7 @@ getAllArticles(){
       console.log(data);
       this.cars=data;
       this.selectCars=this.cars['kbArticles'];
+      console.log(this.selectCars);
       this.page=data['pagerInfo'];
       this.totalitem=this.page.totalItems;
       console.log(this.totalitem);
@@ -116,6 +110,7 @@ UpdateArticles(item) {
   this._data.updateArticle(item).subscribe(
         (x: any) => {
           this.messageService.add({severity: 'success', summary: 'Success Message', detail: 'Updated successfully'});
+          this.getAllArticles();
     //       this._data.getAllkbArticles().subscribe(
     //   (data: Kbarticle[]) => {
     //     this.arr = data;
@@ -126,4 +121,9 @@ UpdateArticles(item) {
         }
       );
     }
+    ngOnDestroy(){
+      // if(this.id){
+      //   clearInterval(this.id);
+      // }
+   }
 }

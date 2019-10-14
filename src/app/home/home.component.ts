@@ -153,7 +153,6 @@ export class HomeComponent implements OnInit {
         );
         this.modalService.dismissAll();
       }
-
     );
     console.log('completed');
 
@@ -170,7 +169,7 @@ export class HomeComponent implements OnInit {
   //   );
   // }
 
-  openEditPopup(Editpopup, item) {
+openEditPopup(Editpopup, item) {
 console.log(item);
     // this.updatedid=item.articleId
     // console.log(this.updatedid);
@@ -296,7 +295,6 @@ UpdateArticles(item) {
         );
       }
     }
-
 }
 
 

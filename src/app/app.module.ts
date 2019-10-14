@@ -27,6 +27,8 @@ import {ButtonModule} from 'primeng/button';
 import {DropdownModule} from 'primeng/dropdown';
 import { PrimedisplayComponent } from './primedisplay/primedisplay.component';
 import {VirtualScrollerModule} from 'primeng/virtualscroller';
+import { PtableComponent } from './ptable/ptable.component';
+import { SharedModule } from 'primeng/components/common/shared';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +41,8 @@ import {VirtualScrollerModule} from 'primeng/virtualscroller';
     CapsPipe,
     CardDirective,
     ContextdemoComponent,
-    PrimedisplayComponent
+    PrimedisplayComponent,
+    PtableComponent
 
 
   ],
@@ -60,7 +63,8 @@ import {VirtualScrollerModule} from 'primeng/virtualscroller';
     ButtonModule,
     DropdownModule,
     TableModule,
-    VirtualScrollerModule
+    VirtualScrollerModule,
+    SharedModule
     // ShContextMenuModule
   ],
   providers: [MessageService],
