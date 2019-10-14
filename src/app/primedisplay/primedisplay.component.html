@@ -1,12 +1,19 @@
 <p-toast [style]="{marginTop: '80px'}"></p-toast>
 <br>
-<p-table [columns]="cols" [value]="selectCars" [(contextMenuSelection)]="selectedCar" [contextMenu]="cm">
-  <ng-template pTemplate="header" let-columns>
+<h3 class="first">data table </h3>
+<p-table #dt1 [columns]="cols" [value]="selectCars" [(contextMenuSelection)]="selectedCar" [contextMenu]="cm">
+  <ng-template pTemplate="header"  let-columns>
       <tr>
-          <th *ngFor="let col of columns">
+          <th *ngFor="let col of columns"  [pSortableColumn]="col.field" pResizableColumn pReorderableColumn>
               {{col.header}}
+              <p-sortIcon [field]="col.field"  ></p-sortIcon>
           </th>
       </tr>
+      <tr>
+        <th *ngFor="let col of columns" [ngSwitch]="col.field" class="ui-fluid">
+            <input pInputText type="text" (input)="dt1.filter($event.target.value, col.field, col.filterMatchMode)" [value]="dt1.filters[col.field]?.value">
+        </th>
+    </tr>
   </ng-template>
   <ng-template pTemplate="body" let-rowData let-columns="columns">
       <tr [pContextMenuRow]="rowData">
@@ -17,3 +24,114 @@
   </ng-template>
 </p-table>
 <p-contextMenu #cm [model]="items"></p-contextMenu>
+
+
+<!--scroll bar-->
+
+
+<h3 class="first"></h3>
+<p-virtualScroller [value]="selectCars" scrollHeight="500px" [itemSize]="150" [rows]="10" [cache]="false"[lazy]="true"  [totalRecords]="">
+    <p-header>
+        List of Articles
+    </p-header>
+    <ng-template let-car pTemplate="item" let-i="index">
+        <div class="ui-g car-item">
+            <div class="ui-g-12 ui-md-2">
+                <div style="font-size: 24px; text-align: center; padding-top: 48px">{{i}}</div>
+            </div>
+            <div class="ui-g-12 ui-md-2">
+                <img src="/assets/profile_img.jpg">
+            </div>
+            <div class="ui-g-12 ui-md-8">
+                <div class="ui-g">
+                    <div class="ui-g-2 ui-sm-6">Article Id: </div>
+                    <div class="ui-g-10 ui-sm-6">{{car?.articleId}}</div>
+
+                    <div class="ui-g-2 ui-sm-6">Article Name: </div>
+                    <div class="ui-g-10 ui-sm-6">{{car?.articleName}}</div>
+
+                    <div class="ui-g-2 ui-sm-6">Content: </div>
+                    <div class="ui-g-10 ui-sm-6">{{car?.content}}</div>
+
+                    <div class="ui-g-2 ui-sm-6">Category Id: </div>
+                    <div class="ui-g-10 ui-sm-6">{{car?.categoryId}}</div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+    <!-- <ng-template let-car pTemplate="loadingItem">
+        <div class="ui-g car-item empty-car-item">
+            <div class="ui-g-12 ui-md-2">
+                <div class="empty-car-item-index"></div>
+            </div>
+            <div class="ui-g-12 ui-md-2">
+                <div class="empty-car-item-image"></div>
+            </div>
+            <div class="ui-g-12 ui-md-8">
+                <div class="ui-g">
+                    <div class="ui-g-12"><div class="empty-car-item-text"></div></div>
+                    <div class="ui-g-12"><div class="empty-car-item-text"></div></div>
+                    <div class="ui-g-12"><div class="empty-car-item-text"></div></div>
+                    <div class="ui-g-12"><div class="empty-car-item-text"></div></div>
+                </div>
+            </div>
+        </div>
+    </ng-template> -->
+</p-virtualScroller>
+
+
+<p-dialog header="Article" [(visible)]="display" [modal]="true" [responsive]="true" [style]="{width: '350px', minWidth: '200px'}" [minY]="70"
+        [maximizable]="true" [baseZIndex]="10000">
+        <form [formGroup]="kb" class="container" (ngSubmit)="UpdateArticles(kb.value)">
+          <h4>Edit Article</h4>
+        <div class="container">
+              <div class="row">
+                <div class="col">
+                  <label><b>ARTICLE_NAME</b></label>
+                  <input formControlName="articleName" type="text" class="form-control">
+                  <!-- <label class="alert alert-danger" *ngIf="kb.get('articleName').hasError('required') && !kb.get('articleName').pristine" >articleName is required.</label> -->
+
+                </div>
+              </div>
+              </div>
+              <!-- <div class="container">
+                <div class="row">
+                  <div class="col">
+                    <label><b>Category name</b></label>
+                    <select formControlName="categoryId" class="form-control">
+                      <option>Choose your category</option>
+
+                    </select>
+                  </div>
+                </div>
+              </div> -->
+                  <!-- <div class="container">
+                    <div class="row">
+                      <div class="col-xs-6 col-sm-4 col-md-6">
+                          <label><b>CATEGORY</b></label>
+                          <input formControlName="categoryId" type="text" class="form-control">
+                           <label class="alert alert-danger" *ngIf="kb.get('categoryId').hasError('required') && !kb.get('categoryId').pristine" >categoryId is required.</label> -->
+
+                        <!-- </div>
+                      </div>
+                    </div>  -->
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                              <label><b>CONTENT</b></label>
+                              <input formControlName="content" [innerHTML] type="text" class="form-control">
+                              <!-- <label class="alert alert-danger" *ngIf="kb.get('content').hasError('required') && !kb.get('content').pristine" >content is required.</label> -->
+                            </div>
+                          </div>
+                        </div>
+                  <br>
+
+      <br>
+      <br>
+
+        <p-footer>
+            <button type="submit" pButton icon="pi pi-check"  label="Yes"></button>&nbsp;&nbsp;
+            <button type="button" pButton icon="pi pi-close" (click)="display=false" label="No" class="ui-button-secondary"></button>
+        </p-footer>
+      </form>
+</p-dialog>

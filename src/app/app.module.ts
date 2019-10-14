@@ -26,6 +26,7 @@ import {InputTextModule} from 'primeng/inputtext';
 import {ButtonModule} from 'primeng/button';
 import {DropdownModule} from 'primeng/dropdown';
 import { PrimedisplayComponent } from './primedisplay/primedisplay.component';
+import {VirtualScrollerModule} from 'primeng/virtualscroller';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +59,8 @@ import { PrimedisplayComponent } from './primedisplay/primedisplay.component';
     InputTextModule,
     ButtonModule,
     DropdownModule,
-    TableModule
+    TableModule,
+    VirtualScrollerModule
     // ShContextMenuModule
   ],
   providers: [MessageService],

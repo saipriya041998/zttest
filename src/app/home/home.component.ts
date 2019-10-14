@@ -1,4 +1,4 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit, OnDestroy  } from '@angular/core';
 import { ArticleService } from '../article.service';
 import { Kbarticle } from './kbarticle';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -41,12 +41,14 @@ export class HomeComponent implements OnInit {
   serarr: Kbarticle[] = [];
   char :any='ggg';
   display:boolean=false;
+  id;
   constructor(private _data: ArticleService,private route:Router, private fb: FormBuilder, private messageService: MessageService, private modalService: NgbModal, private act: ActivatedRoute, private config: NgbModalConfig) {
     config.backdrop ='static';
     config.keyboard = false;
    }
 
   ngOnInit() {
+
     this.items = [
       {
           label: 'File',
@@ -138,7 +140,9 @@ export class HomeComponent implements OnInit {
     ).subscribe(
      (x: any) => {
         // alert("Added successfully");
-        this.messageService.add({severity: 'success', summary: 'Success Message', detail: 'Article Added successfully'});
+        this.id=setInterval(()=>{
+          this.messageService.add({severity: 'success', summary: 'Success Message', detail: 'Article Added successfully'});
+        }, 3000);
         this._data.getAllkbArticles().subscribe(
           (data: Kbarticle[]) => {
             this.arr = data;
@@ -149,8 +153,10 @@ export class HomeComponent implements OnInit {
         );
         this.modalService.dismissAll();
       }
+
     );
     console.log('completed');
+
   }
   // getArticleByIds(item){
   //   this._data.getArticleById(item).subscribe(
@@ -163,6 +169,7 @@ export class HomeComponent implements OnInit {
   //     }
   //   );
   // }
+
   openEditPopup(Editpopup, item) {
 console.log(item);
     // this.updatedid=item.articleId
@@ -193,24 +200,13 @@ this.modalService.open(Editpopup, {ariaLabelledBy: 'modal-basic-title'}).result.
 UpdateArticles(item) {
   console.log(item);
   console.log(item.articleId);
-
-  // this.kb.value.articleId=item.articleId;
-  // this.kb.value.articleName=item.articleName;
-  // this.kb.value.content=item.content;
-  // this.kb.value.previewContent=item.previewContent;
-  // this.kb.value.categoryId=item.categoryId;
-  // this.kb.value.categoryName=item.categoryName;
-  // this.kb.value.createdBy=item.createdBy;
-  // this.kb.value.createdByName=item.createdByName;
-  // this.kb.value.createdDate=item.createdDate;
-  // this.kb.value.modifiedBy=item.modifiedBy;
-  // this.kb.value.modifiedByName=item.modifiedByName;
-  // this.kb.value.modifiedDate=item.modifiedDate;
-
   this._data.updateArticle(item).subscribe(
         (x: any) => {
           // alert('updated successfully')
-          this.messageService.add({severity: 'success', summary: 'Success Message', detail: 'Updated successfully'});
+          setTimeout(()=>{
+
+            this.messageService.add({severity: 'success', summary: 'Success Message', detail: 'Updated successfully'});
+       }, 3000);
           this._data.getAllkbArticles().subscribe(
       (data: Kbarticle[]) => {
         this.arr = data;
@@ -300,6 +296,7 @@ UpdateArticles(item) {
         );
       }
     }
+
 }
 
 
