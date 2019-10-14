@@ -13,7 +13,7 @@
       </tr>
       <tr>
         <th *ngFor="let col of columns" [ngSwitch]="col.field">
-          <p-dropdown *ngSwitchCase="'categoryId'" [options]="cat1" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value, col.field,'equals')"></p-dropdown>
+          <p-dropdown *ngSwitchCase="'categoryName'" [options]="cat1" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value, col.field,'equals')"></p-dropdown>
       </th>
       </tr>
   </ng-template>

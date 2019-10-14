@@ -26,7 +26,8 @@ cat1:Ddlcategory[];
       { field: 'articleId', header: 'Article Id' },
       { field: 'articleName', header: 'Article Name' },
       { field: 'content', header: 'Content' },
-      { field: 'categoryId', header: 'Category Id' }
+      { field: 'categoryId', header: 'Category Id' },
+      {field:'categoryName',header:'Category Name'}
   ];
   // this.cat1=[
   //   { label: 'All Category', value: null },
@@ -49,7 +50,7 @@ getcatogories(){
     (data:Ddlcategory[]) => {
       this.cat = data;
       console.log(this.cat);
-      this.cat1=this.filterformatDataforDropdown("categoryName",this.cat,"Choose your category");
+      this.cat1=this.filterformatDataforDropdown("categoryName",this.cat,"All Categories");
       console.log(this.cat1);
     }
   );
