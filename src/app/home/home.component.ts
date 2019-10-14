@@ -154,8 +154,6 @@ export class HomeComponent implements OnInit {
         this.modalService.dismissAll();
       }
     );
-    console.log('completed');
-
   }
   // getArticleByIds(item){
   //   this._data.getArticleById(item).subscribe(

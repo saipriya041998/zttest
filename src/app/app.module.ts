@@ -29,6 +29,9 @@ import { PrimedisplayComponent } from './primedisplay/primedisplay.component';
 import {VirtualScrollerModule} from 'primeng/virtualscroller';
 import { PtableComponent } from './ptable/ptable.component';
 import { SharedModule } from 'primeng/components/common/shared';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ConfirmationService} from 'primeng/api';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,10 +67,12 @@ import { SharedModule } from 'primeng/components/common/shared';
     DropdownModule,
     TableModule,
     VirtualScrollerModule,
-    SharedModule
+    SharedModule,
+    ConfirmDialogModule
+
     // ShContextMenuModule
   ],
-  providers: [MessageService],
+  providers: [MessageService,ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

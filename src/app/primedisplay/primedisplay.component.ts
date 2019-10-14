@@ -4,6 +4,9 @@ import { MenuItem, MessageService } from 'primeng/api';
 import { ArticleService } from '../article.service';
 import { Pageinfo } from '../home/pageinfo';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Ddlcategory } from '../home/ddlcategory';
+import * as _ from "lodash";
+import {ConfirmationService} from 'primeng/api';
 
 @Component({
   selector: 'app-primedisplay',
@@ -25,7 +28,9 @@ export class PrimedisplayComponent implements OnInit,OnDestroy {
   all_articles:Kbarticle[];
   fetchedarray:Kbarticle;
   id;
-  constructor(private _data:ArticleService,private messageService:MessageService,private fb:FormBuilder) { }
+  categories:Ddlcategory[];
+  cat2:Ddlcategory[];
+  constructor(private _data:ArticleService,private messageService:MessageService,private fb:FormBuilder,private confirmation:ConfirmationService) { }
 
   ngOnInit() {
     this.kb = this.fb.group({
@@ -43,6 +48,7 @@ export class PrimedisplayComponent implements OnInit,OnDestroy {
         modifiedDate: new FormControl()
       });
     this.getAllArticles();
+    this.getcate();
     this.id=setInterval(()=>{
       this.getAllArticles();
     },5000);
@@ -51,7 +57,8 @@ export class PrimedisplayComponent implements OnInit,OnDestroy {
       { field: 'articleId', header: 'Article Id',icon:'fa fa-sort' },
       { field: 'articleName', header: 'Article Name',icon:'fa fa-sort' },
       { field: 'content', header: 'Content',icon:'fa fa-sort' },
-      { field: 'categoryId', header: 'Category Id' ,icon:'fa fa-sort'}
+      { field: 'categoryId', header: 'Category Id' ,icon:'fa fa-sort'},
+      { field:'categoryName',header:'Category Name'}
   ];
     this.items = [
     { label:'View', icon: 'fa fa-search', command: (event) => this.viewArticle(this.selectedCar) },
@@ -63,16 +70,8 @@ viewArticle(car: Kbarticle) {
     this.messageService.add({ severity: 'info', summary: 'Car Selected', detail: car.articleId + ' - ' + car.articleName });
 }
 deleteArticle(car: Kbarticle) {
-  console.log(car);
-  let index = -1;
-  for (let i = 0; i < this.selectCars.length; i++) {
-        if (this.selectCars[i].articleId  == car.articleId) {
-            index = i;
-            break;
-        }
-    }
-  this.selectCars.splice(index, 1);
-  this.messageService.add({ severity: 'info', summary: 'Car Deleted', detail: car.articleId + ' - ' + car.articleName });
+  this.confirm(car);
+
 }
 editArticle(car:Kbarticle){
   this.display=true;
@@ -121,6 +120,58 @@ UpdateArticles(item) {
         }
       );
     }
+    getcate(){
+      this._data.getCat().subscribe(
+        (data:Ddlcategory[])=>{
+          this.categories=data;
+          console.log(this.categories);
+          this.cat2=this.filterformatDataforDropdown('categoryName',this.categories,'');
+          console.log('formated data:',this.cat2);
+        }
+      );
+    }
+    public filterformatDataforDropdown(label, data, Placeholdervalue?) {
+      console.log(data);
+      let formatdata = [];
+      let customdata = {
+        label: null,
+        value: null
+      };
+      if (!_.isEmpty(Placeholdervalue)) {
+        formatdata.push({
+          label: Placeholdervalue,
+          value: null
+        });
+      }
+      _.forEach(data, function (value) {
+        console.log(value);
+        var catid=value.categoryId;
+        console.log(catid);
+        var shallow = _.clone(customdata);
+        shallow.label = value[label];
+        shallow.value = catid;
+        formatdata.push(shallow);
+      });
+      return formatdata;
+    }
+    confirm(car:Kbarticle) {
+      this.confirmation.confirm({
+          message: 'Are you sure that you want to delete this record?',
+          accept: () => {
+              //Actual logic to perform a confirmation
+              console.log(car);
+              let index = -1;
+              for (let i = 0; i < this.selectCars.length; i++) {
+                if (this.selectCars[i].articleId  == car.articleId) {
+                    index = i;
+                    break;
+                }
+            }
+              this.selectCars.splice(index, 1);
+              this.messageService.add({ severity: 'info', summary: 'Car Deleted', detail: car.articleId + ' - ' + car.articleName });
+          }
+      });
+  }
     ngOnDestroy(){
       // if(this.id){
       //   clearInterval(this.id);
