@@ -71,7 +71,6 @@ viewArticle(car: Kbarticle) {
 }
 deleteArticle(car: Kbarticle) {
   this.confirm(car);
-
 }
 editArticle(car:Kbarticle){
   this.display=true;

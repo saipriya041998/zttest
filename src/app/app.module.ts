@@ -31,6 +31,7 @@ import { PtableComponent } from './ptable/ptable.component';
 import { SharedModule } from 'primeng/components/common/shared';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
+import { TbootComponent } from './tboot/tboot.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import {ConfirmationService} from 'primeng/api';
     CardDirective,
     ContextdemoComponent,
     PrimedisplayComponent,
-    PtableComponent
+    PtableComponent,
+    TbootComponent
 
 
   ],

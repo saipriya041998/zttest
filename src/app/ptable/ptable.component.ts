@@ -25,9 +25,9 @@ cat1:Ddlcategory[];
     this.cols = [
       { field: 'articleId', header: 'Article Id' },
       { field: 'articleName', header: 'Article Name' },
-      { field: 'content', header: 'Content' },
       { field: 'categoryId', header: 'Category Id' },
-      {field:'categoryName',header:'Category Name'}
+      { field: 'categoryName', header: 'Category Name'},
+      { field: 'content', header: 'Content' },
   ];
   // this.cat1=[
   //   { label: 'All Category', value: null },
