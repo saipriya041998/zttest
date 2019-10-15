@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Kbarticle } from '../home/kbarticle';
+import { Kbarticle, ArticleResolve } from '../home/kbarticle';
 import { MenuItem, MessageService } from 'primeng/api';
 import { ArticleService } from '../article.service';
 import { Pageinfo } from '../home/pageinfo';
@@ -7,6 +7,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { Ddlcategory } from '../home/ddlcategory';
 import * as _ from "lodash";
 import {ConfirmationService} from 'primeng/api';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-primedisplay',
@@ -30,9 +31,21 @@ export class PrimedisplayComponent implements OnInit,OnDestroy {
   id;
   categories:Ddlcategory[];
   cat2:Ddlcategory[];
-  constructor(private _data:ArticleService,private messageService:MessageService,private fb:FormBuilder,private confirmation:ConfirmationService) { }
+  artData:ArticleResolve;
+  artres:Kbarticle[];
+  errmess:string='';
+  kbart:Kbarticle[];
+  constructor(private _data:ArticleService,private messageService:MessageService,private fb:FormBuilder,private confirmation:ConfirmationService,private _act:ActivatedRoute) {
+    this.artData=this._act.snapshot.data['adata'];
+    console.log(this.artData);
+   }
 
   ngOnInit() {
+this.artres=this.artData.data;
+console.log(this.artres);
+this.errmess=this.artData.error;
+this.kbart=this.artres['kbArticles'];
+console.log(this.kbart);
     this.kb = this.fb.group({
         articleId: new FormControl(),
         articleName: new FormControl(null),

@@ -1,7 +1,7 @@
 <p-toast [style]="{marginTop: '80px'}"></p-toast>
 <br>
 <h3 class="first">data table </h3>
-<p-table #dt1 [columns]="cols" [value]="selectCars" [(contextMenuSelection)]="selectedCar" [contextMenu]="cm">
+<p-table #dt1 [columns]="cols" [value]="kbart" [(contextMenuSelection)]="selectedCar" [contextMenu]="cm">
   <ng-template pTemplate="header"  let-columns>
       <tr>
           <th *ngFor="let col of columns"  [pSortableColumn]="col.field" pResizableColumn pReorderableColumn>
@@ -30,9 +30,8 @@
 
 <!--scroll bar-->
 
-
 <h3 class="first"></h3>
-<p-virtualScroller [value]="selectCars" scrollHeight="500px" [itemSize]="150" [rows]="10">
+<p-virtualScroller [value]="kbart" scrollHeight="500px" [itemSize]="150" [rows]="10">
     <p-header>
         List of Articles
     </p-header>

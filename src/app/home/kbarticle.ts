@@ -14,3 +14,8 @@ export class Kbarticle {
     public modifiedDate: string
   ){}
 }
+
+export class ArticleResolve{
+  public constructor(
+    public data:any[],public error:string){}
+}
