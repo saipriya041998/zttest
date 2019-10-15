@@ -7,13 +7,13 @@ import { PtableComponent } from './ptable/ptable.component';
 import { TbootComponent } from './tboot/tboot.component';
 import { ArticleresolveService } from './articleresolve.service';
 
-const arr:Routes=[
+const arr: Routes = [
   {path:'', component: HomeComponent},
   {path:'contact',component:ContactUsComponent},
   {path:'about',component:AboutUsComponent},
-  {path:'prime',resolve:{adata:ArticleresolveService},component:PrimedisplayComponent},
-  {path:'ptable',component:PtableComponent},
-  {path:'boot',component:TbootComponent}
+  {path:'prime',resolve: {adata:ArticleresolveService}, component: PrimedisplayComponent},
+  {path:'ptable',component: PtableComponent},
+  {path:'boot',component: TbootComponent}
 ];
 
 export const routing=RouterModule.forRoot(arr);
