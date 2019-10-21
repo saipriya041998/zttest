@@ -15,6 +15,7 @@ import { MenuItem } from 'primeng/api';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
 export class HomeComponent implements OnInit {
   items: MenuItem[];
   visibleSidebar1;
