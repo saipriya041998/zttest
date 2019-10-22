@@ -55,6 +55,7 @@ getcatogories(){
     }
   );
 }
+
 public filterformatDataforDropdown(label, data, Placeholdervalue?) {
   let formatdata = [];
   let customdata = {
