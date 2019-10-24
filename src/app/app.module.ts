@@ -32,7 +32,9 @@ import { SharedModule } from 'primeng/components/common/shared';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
 import { TbootComponent } from './tboot/tboot.component';
-
+import { TreetableComponent } from './treetable/treetable.component';
+import {TreeTableModule} from 'primeng/treetable';
+import { Treetable2Component } from './treetable2/treetable2.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +49,9 @@ import { TbootComponent } from './tboot/tboot.component';
     ContextdemoComponent,
     PrimedisplayComponent,
     PtableComponent,
-    TbootComponent
+    TbootComponent,
+    TreetableComponent,
+    Treetable2Component
 
 
   ],
@@ -70,7 +74,8 @@ import { TbootComponent } from './tboot/tboot.component';
     TableModule,
     VirtualScrollerModule,
     SharedModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    TreeTableModule
 
     // ShContextMenuModule
   ],

@@ -1,0 +1,22 @@
+
+<p-toast [style]="{marginTop: '80px'}"></p-toast>
+
+<p-treeTable [value]="files" [columns]="cols" dataKey="name" [(contextMenuSelection)]="selectedNode" [contextMenu]="cm">
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns">
+                {{col.header}}
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowNode let-rowData="rowData" let-columns="columns">
+        <tr [ttContextMenuRow]="rowNode">
+            <td *ngFor="let col of columns; let i = index">
+                <p-treeTableToggler [rowNode]="rowNode" ></p-treeTableToggler>
+               {{rowData[col.field]}}
+            </td>
+        </tr>
+    </ng-template>
+</p-treeTable>
+
+<p-contextMenu #cm [model]="items"></p-contextMenu>
