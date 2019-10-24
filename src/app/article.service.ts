@@ -43,7 +43,7 @@ concat: string;
     return this._http.get(this.readmore + item);
   }
   getPageByNumber(num) {
-      this.concat = "categ=" +'&Page='+ num;
+      this.concat = 'categ=' +'&Page='+ num;
       return this._http.get(this.pagination + this.concat);
   }
   getsearchedrecord(serchstring){

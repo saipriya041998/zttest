@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TreeNode, MenuItem, MessageService } from 'primeng/api';
 import { NodeService } from '../node.service';
+import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-treetable2',
@@ -8,14 +9,23 @@ import { NodeService } from '../node.service';
   styleUrls: ['./treetable2.component.css']
 })
 export class Treetable2Component implements OnInit {
-    constructor(private nodeService: NodeService, private messageService: MessageService) { }
+    constructor(private nodeService: NodeService, private messageService: MessageService,private fb:FormBuilder) { }
+    newCar: boolean;
+    displayDialog: boolean;
+    cars: TreeNode[];
+    car: TreeNode = {};
+    selectedCar: TreeNode;
+    display:boolean=false;
+    node:TreeNode;
+    addform:FormGroup;
+    result;
   files: TreeNode[];
   selectedNode: TreeNode;
   cols: any[];
   items: MenuItem[];
   files2: TreeNode[];
   selectedColumns: any[];
-    myfiles: TreeNode[] = [
+  myfiles: TreeNode[] = [
       {
         data: {
             name: 'Cloud',
@@ -67,17 +77,23 @@ export class Treetable2Component implements OnInit {
   ];
 
     ngOnInit() {
-        this.nodeService.getFilesystem().then(files => this.files = files);
-        this.files2 = this.myfiles;
-        this.cols = [
+      this.addform=this.fb.group({
+        name:new FormControl(null),
+        size:new FormControl(null),
+        type:new FormControl(null)
+      });
+      this.nodeService.getFilesystem().then(files => this.files = files);
+      this.files2 = this.myfiles;
+      this.cols = [
             { field: 'name', header: 'Name' },
             { field: 'size', header: 'Size' },
             { field: 'type', header: 'Type' }
         ];
-        this.selectedColumns = this.cols;
-        this.items = [
+      this.selectedColumns = this.cols;
+      this.items = [
             { label: 'View', icon: 'pi pi-search', command: (event) => this.viewFile(this.selectedNode) },
-            { label: 'Toggle', icon: 'pi pi-sort', command: (event) => this.toggleFile(this.selectedNode) }
+            { label: 'Toggle', icon: 'pi pi-sort', command: (event) => this.toggleFile(this.selectedNode) },
+            { label: 'Add', icon: 'pi pi-plus', command: (event) => this.openaddpopup(this.selectedNode) }
         ];
     }
 
@@ -89,4 +105,24 @@ export class Treetable2Component implements OnInit {
         node.expanded = !node.expanded;
         this.files = [...this.files];
     }
+    openaddpopup(node){
+      this.node=node;
+      this.display=true;
+
+    }
+    save(item){
+      this.result={
+        data:{
+          'name':this.addform.value.name,
+          'size':this.addform.value.size,
+          'type':this.addform.value.type,
+
+        },
+      children:[]
+      }
+      this.node['children'].push(this.result);
+      this.display=false;
+      this.addform.reset();
+    }
+
 }

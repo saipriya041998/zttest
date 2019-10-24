@@ -8,7 +8,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { routing } from './app.routing';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { NgbModule,NgbAlertModule, NgbPagination } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbAlertModule, NgbPagination } from '@ng-bootstrap/ng-bootstrap';
 import {ToastModule} from 'primeng/toast';
 import { MessageService } from 'primeng/components/common/messageservice';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';

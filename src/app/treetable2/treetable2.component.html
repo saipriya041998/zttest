@@ -1,6 +1,6 @@
 
 <p-toast [style]="{marginTop: '80px'}"></p-toast>
-
+<h3>Tree Table</h3>
 <p-treeTable [value]="files"  [columns]="selectedColumns" dataKey="name" [(contextMenuSelection)]="selectedNode" [contextMenu]="cm">
   <ng-template pTemplate="caption">
     <div style="text-align:left">
@@ -24,8 +24,7 @@
         </tr>
     </ng-template>
 </p-treeTable>
-
-
+<!-- <button type="button" pButton icon="fa fa-plus" (click)="showDialogToAdd()" label="Add"></button> -->
 <p-contextMenu #cm [model]="items"></p-contextMenu>
 
 <h3>Dynamic columns</h3>
@@ -47,3 +46,45 @@
           </tr>
       </ng-template>
   </p-treeTable>
+
+
+
+
+  <p-dialog header="Add Articles" [(visible)]="display" [responsive]="true" showEffect="fade" [modal]="true"  [style]="{width: '300px'}">
+    <form [formGroup]="addform" (ngSubmit)="save(addform.value)">
+
+    <div class="ui-g ui-fluid" >
+        <div class="ui-g-12">
+            <div class="ui-g-4">
+                <label >Name :</label>
+            </div>
+            <div class="ui-g-8">
+                <input pInputText formControlName="name"/>
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-4">
+                <label >Size :</label>
+            </div>
+            <div class="ui-g-8">
+                <input pInputText  formControlName="size"/>
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-4">
+                <label >Type :</label>
+            </div>
+            <div class="ui-g-8">
+                <input pInputText  formControlName="type"/>
+            </div>
+        </div>
+    </div>
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+          <button type="submit" pButton  label="Submit"></button>&nbsp;&nbsp;
+          <button type="button" pButton  (click)="display=false" label="Cancel" class="ui-button-secondary"></button>
+        </div>
+    </p-footer>
+    <br>
+  </form>
+</p-dialog>
