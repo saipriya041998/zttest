@@ -7,7 +7,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { routing } from './app.routing';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule, FormsModule } from "@angular/forms";
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgbModule,NgbAlertModule, NgbPagination } from '@ng-bootstrap/ng-bootstrap';
 import {ToastModule} from 'primeng/toast';
 import { MessageService } from 'primeng/components/common/messageservice';
@@ -36,6 +36,9 @@ import { TreetableComponent } from './treetable/treetable.component';
 import {TreeTableModule} from 'primeng/treetable';
 import { Treetable2Component } from './treetable2/treetable2.component';
 import { Treetable3Component } from './treetable3/treetable3.component';
+import {MultiSelectModule} from 'primeng/multiselect';
+import { NodeService } from './node.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,11 +80,13 @@ import { Treetable3Component } from './treetable3/treetable3.component';
     VirtualScrollerModule,
     SharedModule,
     ConfirmDialogModule,
-    TreeTableModule
+    TreeTableModule,
+    MultiSelectModule
+
 
     // ShContextMenuModule
   ],
-  providers: [MessageService,ConfirmationService],
+  providers: [MessageService, ConfirmationService, NodeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -13,7 +13,7 @@
         <tr [ttContextMenuRow]="rowNode">
             <td *ngFor="let col of columns">
                 <p-treeTableToggler [rowNode]="rowNode"></p-treeTableToggler>
-                {{rowData[col.field]}}
+                {{rowData['node'][col.field]}}
             </td>
         </tr>
     </ng-template>

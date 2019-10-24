@@ -1,42 +1,37 @@
-<div class="content-section implementation">
-  <h3 class="first">Basic</h3>
-  <p-treeTable [value]="files1">
-      <ng-template pTemplate="header">
-          <tr>
-              <th>Name</th>
-              <th>Size</th>
-              <th>Type</th>
-          </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
-          <tr>
-              <td>
-                  <p-treeTableToggler [rowNode]="rowNode"></p-treeTableToggler>
-                  {{rowData.name}}
-              </td>
-              <td>{{rowData.size}}</td>
-              <td>{{rowData.type}}</td>
-          </tr>
-      </ng-template>
-  </p-treeTable>
-
-  <h3>Dynamic Columns</h3>
-  <p-treeTable [value]="files2" [columns]="cols">
-      <ng-template pTemplate="header" let-columns>
-          <tr>
-              <th *ngFor="let col of columns">
-                  {{col.header}}
-              </th>
-          </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-rowNode let-rowData="rowData" let-columns="columns">
-          <tr>
-              <td *ngFor="let col of columns; let i = index">
-                  <p-treeTableToggler [rowNode]="rowNode" *ngIf="i == 0"></p-treeTableToggler>
-                  <p-treeTableCheckbox [value]="rowNode" *ngIf="i == 0"></p-treeTableCheckbox>
-                  {{rowData[col.field]}}
-              </td>
-          </tr>
-      </ng-template>
-  </p-treeTable>
-</div>
+<p-treeTable [value]="sales">
+  <ng-template pTemplate="header">
+      <tr>
+          <th rowspan="3" [ngClass]="['kb-row']" >Brand</th>
+          <th colspan="4"  [ngClass]="['kb-row']">Sale Rate</th>
+      </tr>
+      <tr>
+          <th colspan="2" [ngClass]="['kb-row']">Sales</th>
+          <th colspan="2" [ngClass]="['kb-row']">Profits</th>
+      </tr>
+      <tr>
+          <th [ngClass]="['kb-row']">Last Year</th>
+          <th [ngClass]="['kb-row']">This Year</th>
+          <th [ngClass]="['kb-row']">Last Year</th>
+          <th [ngClass]="['kb-row']">This Year</th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
+      <tr>
+          <td >
+              <p-treeTableToggler [rowNode]="rowNode"></p-treeTableToggler>
+              {{rowData.brand}}
+          </td>
+          <td>{{rowData.lastYearSale}}</td>
+          <td>{{rowData.thisYearSale}}</td>
+          <td>{{rowData.lastYearProfit}}</td>
+          <td>{{rowData.thisYearProfit}}</td>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="footer">
+      <tr>
+          <td colspan="3" >Totals</td>
+          <td >$3,283,772</td>
+          <td >$2,126,925</td>
+      </tr>
+  </ng-template>
+</p-treeTable>

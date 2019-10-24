@@ -13,7 +13,8 @@ export class Treetable2Component implements OnInit {
   selectedNode: TreeNode;
   cols: any[];
   items: MenuItem[];
-  files2:TreeNode[];
+  files2: TreeNode[];
+  selectedColumns: any[];
     myfiles: TreeNode[] = [
       {
         data: {
@@ -73,6 +74,7 @@ export class Treetable2Component implements OnInit {
             { field: 'size', header: 'Size' },
             { field: 'type', header: 'Type' }
         ];
+        this.selectedColumns = this.cols;
         this.items = [
             { label: 'View', icon: 'pi pi-search', command: (event) => this.viewFile(this.selectedNode) },
             { label: 'Toggle', icon: 'pi pi-sort', command: (event) => this.toggleFile(this.selectedNode) }

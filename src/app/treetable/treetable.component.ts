@@ -42,7 +42,6 @@ selectedNode: Kbarticle;
 }
 
 toggleFile(node) {
-  console.log(node);
     node.expanded = !node.expanded;
     this.files2 = [...this.files2];
 }
