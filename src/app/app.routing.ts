@@ -8,6 +8,7 @@ import { TbootComponent } from './tboot/tboot.component';
 import { ArticleresolveService } from './articleresolve.service';
 import { TreetableComponent } from './treetable/treetable.component';
 import { Treetable2Component } from './treetable2/treetable2.component';
+import { Treetable3Component } from './treetable3/treetable3.component';
 
 const arr: Routes = [
   {path:'', component: HomeComponent},
@@ -17,7 +18,8 @@ const arr: Routes = [
   {path:'ptable',component: PtableComponent},
   {path:'boot',component: TbootComponent},
   {path:'tree',component:TreetableComponent},
-  {path:'tree2',component:Treetable2Component}
+  {path:'tree2',component:Treetable2Component},
+  {path:'tree3',component:Treetable3Component}
 ];
 
 export const routing=RouterModule.forRoot(arr);

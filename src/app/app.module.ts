@@ -35,6 +35,7 @@ import { TbootComponent } from './tboot/tboot.component';
 import { TreetableComponent } from './treetable/treetable.component';
 import {TreeTableModule} from 'primeng/treetable';
 import { Treetable2Component } from './treetable2/treetable2.component';
+import { Treetable3Component } from './treetable3/treetable3.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +52,8 @@ import { Treetable2Component } from './treetable2/treetable2.component';
     PtableComponent,
     TbootComponent,
     TreetableComponent,
-    Treetable2Component
+    Treetable2Component,
+    Treetable3Component
 
 
   ],

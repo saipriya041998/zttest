@@ -8,27 +8,71 @@ import { NodeService } from '../node.service';
   styleUrls: ['./treetable2.component.css']
 })
 export class Treetable2Component implements OnInit {
-  files: TreeNode[];
-
-    selectedNode: TreeNode;
-
-    cols: any[];
-
-    items: MenuItem[];
-
     constructor(private nodeService: NodeService, private messageService: MessageService) { }
+  files: TreeNode[];
+  selectedNode: TreeNode;
+  cols: any[];
+  items: MenuItem[];
+  files2:TreeNode[];
+    myfiles: TreeNode[] = [
+      {
+        data: {
+            name: 'Cloud',
+            size: '20mb',
+            type: 'Folder',
+        },
+        children: [
+            {
+                data: {
+                    name: 'backup-1.zip',
+                    size: '10mb',
+                    type: 'Zip',
+
+                },
+            },
+            {
+                data: {
+                    name: 'backup-2.zip',
+                    size: '10mb',
+                    type: 'Zip',
+
+                },
+            },
+        ],
+    },
+    {
+      data: {
+          name: 'Desktop',
+          size: '20mb',
+          type: 'Folder',
+      },
+      children: [
+          {
+              data: {
+                  name: 'backup-1.zip',
+                  size: '10mb',
+                  type: 'Zip',
+              },
+          },
+          {
+              data: {
+                  name: 'backup-2.zip',
+                  size: '10mb',
+                  type: 'Zip',
+              },
+          },
+      ],
+    }
+  ];
 
     ngOnInit() {
-
         this.nodeService.getFilesystem().then(files => this.files = files);
-
-
+        this.files2 = this.myfiles;
         this.cols = [
             { field: 'name', header: 'Name' },
             { field: 'size', header: 'Size' },
             { field: 'type', header: 'Type' }
         ];
-
         this.items = [
             { label: 'View', icon: 'pi pi-search', command: (event) => this.viewFile(this.selectedNode) },
             { label: 'Toggle', icon: 'pi pi-sort', command: (event) => this.toggleFile(this.selectedNode) }
