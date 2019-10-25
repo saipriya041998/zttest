@@ -1,7 +1,7 @@
 
 <p-toast [style]="{marginTop: '80px'}"></p-toast>
 <h3>Tree Table</h3>
-<p-treeTable [value]="files"  [columns]="selectedColumns" dataKey="name" [(contextMenuSelection)]="selectedNode" [contextMenu]="cm">
+<p-treeTable [value]="files"  selectionMode="single" [columns]="selectedColumns" dataKey="name" [(contextMenuSelection)]="selectedNode" [contextMenu]="cm">
   <ng-template pTemplate="caption">
     <div style="text-align:left">
         <p-multiSelect [options]="cols" [(ngModel)]="selectedColumns" optionLabel="header"
@@ -52,7 +52,6 @@
 
   <p-dialog header="Add Articles" [(visible)]="display" [responsive]="true" showEffect="fade" [modal]="true"  [style]="{width: '300px'}">
     <form [formGroup]="addform" (ngSubmit)="save(addform.value)">
-
     <div class="ui-g ui-fluid" >
         <div class="ui-g-12">
             <div class="ui-g-4">

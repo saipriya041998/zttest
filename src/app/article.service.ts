@@ -6,14 +6,14 @@ import { promise } from 'protractor';
   providedIn: 'root'
 })
 export class ArticleService {
-dispplay_article='https://5df2226b.ngrok.io/api/KB/GetArticles?getall=0&categ=';
-add_article= 'https://5df2226b.ngrok.io/api/KB/InsertUpdateKBAricles';
-update= 'https://5df2226b.ngrok.io/api/KB/InsertUpdateKBAricles';
-article_by_id='https://5df2226b.ngrok.io/api/KB/GetKBArticlesById?ArticleId=';
-readmore='https://5df2226b.ngrok.io/api/KB/GetReadArticle?ArticleId=';
-pagination= 'https://5df2226b.ngrok.io/api/KB/GetArticles?getall=0&categ=&';
-getcateg='https://5df2226b.ngrok.io/api/KB/GetCategories';
-search='https://5df2226b.ngrok.io/api/KB/GetArticles?getall=0&categ=&Page=1&SearchString=';
+dispplay_article='https://52c7faad.ngrok.io/api/KB/GetArticles?getall=0&categ=';
+add_article= 'https://52c7faad.ngrok.io/api/KB/InsertUpdateKBAricles';
+update= 'https://52c7faad.ngrok.io/api/KB/InsertUpdateKBAricles';
+article_by_id='https://52c7faad.ngrok.io/api/KB/GetKBArticlesById?ArticleId=';
+readmore='https://52c7faad.ngrok.io/api/KB/GetReadArticle?ArticleId=';
+pagination= 'https://52c7faad.ngrok.io/api/KB/GetArticles?getall=0&categ=&';
+getcateg='https://52c7faad.ngrok.io/api/KB/GetCategories';
+search='https://52c7faad.ngrok.io/api/KB/GetArticles?getall=0&categ=&Page=1&SearchString=';
 concat: string;
 
   constructor(private _http: HttpClient) { }
