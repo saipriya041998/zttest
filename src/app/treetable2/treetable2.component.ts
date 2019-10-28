@@ -19,13 +19,13 @@ export class Treetable2Component implements OnInit {
     node:TreeNode;
     addform:FormGroup;
     result: TreeNode;
-  files: TreeNode[];
-  selectedNode: TreeNode;
-  cols: any[];
-  items: MenuItem[];
-  files2: TreeNode[];
-  selectedColumns: any[];
-  myfiles: TreeNode[] = [
+    files: TreeNode[];
+    selectedNode: TreeNode;
+    cols: any[];
+    items: MenuItem[];
+    files2: TreeNode[];
+    selectedColumns: any[];
+    myfiles: TreeNode[] = [
       {
         data: {
             name: 'Cloud',
@@ -116,9 +116,9 @@ export class Treetable2Component implements OnInit {
       this.node=node;
       this.display=true;
     }
-  delete(node){
-    this.node=node;
-    console.log(node);
+    delete(node){
+      this.node=node;
+      console.log(node);
   //   if (this.node && this.node.parent) {
   //     let index = this.node.parent.children.indexOf(this.node);
   //     this.node.parent.children.splice(index,1);
@@ -127,7 +127,6 @@ export class Treetable2Component implements OnInit {
     // let temp=Object.values(this.node);
     // this.files.splice(node,1);
     // this.files.splice(node,1);
-
     // console.log(temp);
     // temp.splice(2,1);
     // console.log(temp);
@@ -140,6 +139,7 @@ export class Treetable2Component implements OnInit {
     // node.splice(i, 1);
     // console.log(this.node);
     // this.node['data'].splice(node);
+
 
 
 
