@@ -1,22 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { promise } from 'protractor';
-
+import { appconstant } from './app.constant';
 @Injectable({
   providedIn: 'root'
 })
 export class ArticleService {
-dispplay_article='https://52c7faad.ngrok.io/api/KB/GetArticles?getall=0&categ=';
-add_article= 'https://52c7faad.ngrok.io/api/KB/InsertUpdateKBAricles';
-update= 'https://52c7faad.ngrok.io/api/KB/InsertUpdateKBAricles';
-article_by_id='https://52c7faad.ngrok.io/api/KB/GetKBArticlesById?ArticleId=';
-readmore='https://52c7faad.ngrok.io/api/KB/GetReadArticle?ArticleId=';
-pagination= 'https://52c7faad.ngrok.io/api/KB/GetArticles?getall=0&categ=&';
-getcateg='https://52c7faad.ngrok.io/api/KB/GetCategories';
-search='https://52c7faad.ngrok.io/api/KB/GetArticles?getall=0&categ=&Page=1&SearchString=';
-concat: string;
+  dispplay_article = appconstant.api + 'GetArticles?getall=0&categ=';
+  add_article=appconstant.api + 'InsertUpdateKBAricles';
+  update=appconstant.api + 'InsertUpdateKBAricles';
+  article_by_id=appconstant.api + 'GetKBArticlesById?ArticleId=';
+  readmore=appconstant.api + 'GetReadArticle?ArticleId=';
+  pagination=appconstant.api + 'GetArticles?getall=0&categ=&';
+  getcateg=appconstant.api + 'GetCategories';
+  search=appconstant.api + 'GetArticles?getall=0&categ=&Page=1&SearchString=';
+  concat: string;
 
   constructor(private _http: HttpClient) { }
+
   getAllkbArticles() {
     return this._http.get(this.dispplay_article);
   }

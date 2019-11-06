@@ -157,13 +157,13 @@ export class Treetable2Component implements OnInit {
     save(item){
       this.result = {
         data: {
-          'name':this.addform.value.name,
-          'size':this.addform.value.size,
-          'type':this.addform.value.type,
+          'name': this.addform.value.name,
+          'size': this.addform.value.size,
+          'type': this.addform.value.type,
 
         },
       children: []
-      }
+      };
       this.node['children'].push(this.result);
       this.display=false;
       this.addform.reset();
